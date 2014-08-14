@@ -1,3 +1,7 @@
+# Current Build Status
+
+[![Build Status](https://drone.io/github.com/waynesayonara/imperium/status.png)](https://drone.io/github.com/waynesayonara/imperium/latest)
+
 # Imperium
 
 Real-time RPG with turn-based fighting system
