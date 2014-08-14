@@ -1,0 +1,6 @@
+ #.travis.yml
+    rvm:
+      - 1.9.3
+      - rbx-18mode
+    env:
+      - FOO=bar BAR=foo

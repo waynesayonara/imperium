@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="904c2702-4115-4dfd-acf1-d31f249bf31f" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.travis.yml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -42,13 +43,23 @@
       <file leaf-file-name="README.md" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.073891625" vertical-offset="0" max-vertical-offset="645">
-              <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.049261082" vertical-offset="0" max-vertical-offset="615">
+              <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
               <folding />
             </state>
           </provider>
           <provider editor-type-id="MarkdownPreviewEditor">
             <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".travis.yml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.travis.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="165">
+              <caret line="3" column="8" selection-start-line="3" selection-start-column="8" selection-end-line="3" selection-end-column="8" />
+              <folding />
+            </state>
           </provider>
         </entry>
       </file>
@@ -113,6 +124,7 @@
         <option value="$PROJECT_DIR$/lib/imperium.rb" />
         <option value="$PROJECT_DIR$/imperium.iml" />
         <option value="$PROJECT_DIR$/imperium.gemspec" />
+        <option value="$PROJECT_DIR$/.travis.yml" />
         <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
@@ -517,7 +529,7 @@
       <created>1408042821442</created>
       <updated>1408042821442</updated>
       <workItem from="1408042823422" duration="284000" />
-      <workItem from="1408043108780" duration="3318000" />
+      <workItem from="1408043108780" duration="4091000" />
     </task>
     <task id="LOCAL-00001" summary="updated README file #1">
       <created>1408045030884</created>
@@ -531,11 +543,15 @@
       <created>1408045783264</created>
       <updated>1408045783264</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="drone.io status badge #1">
+      <created>1408046850062</created>
+      <updated>1408046850063</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3602000" />
+    <option name="totallyTimeSpent" value="4375000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="24" width="1855" height="1056" extended-state="6" />
@@ -588,7 +604,8 @@
     <MESSAGE value="v." />
     <MESSAGE value="updated README file #1" />
     <MESSAGE value="Changed bundler version to match drone.io configuration #1" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed bundler version to match drone.io configuration #1" />
+    <MESSAGE value="drone.io status badge #1" />
+    <option name="LAST_COMMIT_MESSAGE" value="drone.io status badge #1" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -673,10 +690,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/.travis.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="165">
+          <caret line="3" column="8" selection-start-line="3" selection-start-column="8" selection-end-line="3" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.073891625" vertical-offset="0" max-vertical-offset="645">
-          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.049261082" vertical-offset="0" max-vertical-offset="615">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
           <folding />
         </state>
       </provider>
