@@ -1,6 +1,6 @@
 # Imperium
 
-TODO: Write a gem description
+Real-time RPG with turn-based fighting system
 
 ## Installation
 
@@ -20,11 +20,13 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+TODO: Write full usage
+
+Install & Enjoy
 
 ## Contributing
 
-1. Fork it ( https://github.com/[my-github-username]/imperium/fork )
+1. Fork it ( https://github.com/waynesayonara/imperium/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
