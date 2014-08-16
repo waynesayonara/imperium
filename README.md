@@ -1,5 +1,7 @@
 # Current Build Status
 
+https://travis-ci.org/waynesayonara/imperium.svg?branch=master
+
 # Imperium
 
 Real-time RPG with turn-based fighting system
