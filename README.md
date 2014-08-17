@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/waynesayonara/imperium.png?label=ready&title=Ready)](https://waffle.io/waynesayonara/imperium)
 # Current Build Status
 
 [![Build Status](https://travis-ci.org/waynesayonara/imperium.svg?branch=master)](https://travis-ci.org/waynesayonara/imperium)
