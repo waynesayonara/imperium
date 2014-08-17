@@ -2,7 +2,7 @@
 [![Build Status](https://travis-ci.org/waynesayonara/imperium.svg?branch=master)](https://travis-ci.org/waynesayonara/imperium)
 
 ## Issues:
-[![Stories in Ready](https://badge.waffle.io/waynesayonara/imperium.png?label=ready&title=Ready%to%be%worked%on)](https://waffle.io/waynesayonara/imperium)
+[![Stories in Ready](https://badge.waffle.io/waynesayonara/imperium.png?label=ready&title=Ready%20to%20be%20worked%20on)](https://waffle.io/waynesayonara/imperium)
 [![Stories in In Progress](https://badge.waffle.io/waynesayonara/imperium.png?label=In%20Progress&title=In%20Progress)](https://waffle.io/waynesayonara/imperium)
 [![Stories in needs_review](https://badge.waffle.io/waynesayonara/imperium.png?label=needs_review&title=Needs%20Code%20Review)](https://waffle.io/waynesayonara/imperium)
 
