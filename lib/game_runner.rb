@@ -1,4 +1,4 @@
-require 'imperium'
+require './imperium'
 
 window = Imperium::ImperiumMain.new
 window.show
