@@ -1,6 +1,7 @@
-require "imperium/version"
+require 'imperium/version'
+require 'imperium/imperium_main'
 require 'rubygems'
 require 'gosu'
 
-window = ImperiumMain.new
+window = Imperium::ImperiumMain.new
 window.show
