@@ -1,4 +1,4 @@
-require './imperium/version'
+require_relative 'version'
 require 'rubygems'
 require 'gosu'
 
