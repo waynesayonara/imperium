@@ -14,6 +14,8 @@ describe 'Imperium::MenuScene rendering' do
   end
 
   after(:all) do
+    Gosu.send(:remove_const, :Window)
+    Gosu.send(:remove_const, :Image)
     Gosu::Window = GosuWindowBackup
     Gosu::Image = GosuImageBackup
   end
