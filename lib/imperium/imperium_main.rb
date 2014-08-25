@@ -62,6 +62,20 @@ module Imperium
       end
     end
 
+    def update
+      if(!@scenes.empty?)
+        @scenes[-1].update(self)
+      end
+    end
+
+    def needs_cursor?
+      if(!@scenes.empty?)
+        return @scenes[-1].needs_cursor?
+      end
+
+      return false
+    end
+
     private
     def scene_pushing(scene)
     end
@@ -76,6 +90,5 @@ module Imperium
     def scene_popped(scene)
       draw
     end
-
   end
 end

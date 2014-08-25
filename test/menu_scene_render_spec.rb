@@ -25,12 +25,13 @@ describe 'Imperium::MenuScene rendering' do
       super(200,200,false)
       @image = Gosu::Image.new(self, 'picture.png', false)
     end
+
     def draw
       @image.draw(0, 0, 0) unless button_down?(5) # I haven't added the constants yet, but they'll come
     end
   end
 
-  # examples of GUI tests, they don't realy test imperium functionality
+  # examples of GUI tests, they don't really test imperium functionality
   it 'renders menu scene according to data model' do
     window = MockWindow.new
     window.do_tick

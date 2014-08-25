@@ -20,6 +20,10 @@ describe Imperium::Scene do
     expect(@mock).to respond_to(:button_down)
   end
 
+  it 'should respond to update event' do
+    expect(@mock).to respond_to(:update)
+  end
+
   it 'should respond to button up event' do
     expect(@mock).to respond_to(:button_up)
   end

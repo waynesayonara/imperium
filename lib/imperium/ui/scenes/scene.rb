@@ -7,12 +7,6 @@ module Imperium
     public
     attr_accessor :data_model_type
 
-    def button_up(id, window)
-    end
-
-    def button_down(id, window)
-    end
-
     def data_model
       @data_model
     end
@@ -25,11 +19,28 @@ module Imperium
       @data_model = model
     end
 
+    def button_up(id, window)
+      raise NotImplementedError.new 'Must be overridden in derived classes'
+    end
+
+    def button_down(id, window)
+      raise NotImplementedError.new 'Must be overridden in derived classes'
+    end
+
     # this method will be called from main window
     # it describes how concrete scene impl
     # should be rendered on a screen
     def render_scene(window)
       raise NotImplementedError.new 'Must be overridden in derived classes'
+    end
+
+    def update(window)
+      raise NotImplementedError.new 'Must be overridden in derived classes'
+    end
+
+    # Might be overridden for cursorless scenes
+    def needs_cursor?
+      return true
     end
   end
 end
