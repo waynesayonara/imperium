@@ -24,4 +24,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rake', '~> 10.0'
   spec.add_development_dependency 'gosu', '~> 0.7.50'
   spec.add_development_dependency 'rspec', '~> 3.0.0'
+  spec.add_development_dependency 'tmx', '~> 0.1.4'
 end

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="16" height="16" tilewidth="16" tileheight="16">
+ <properties>
+  <property name="bg1" value="#402010"/>
+  <property name="bg2" value="#100000"/>
+	<property name="fg1" value="#00ff0000"/>
+	<property name="fg2" value="#10ff0000"/>
+  <property name="map_id" value="Test_Map"/>
+  <property name="display_name" value="Test Map"/>
+  <property name="is_main" value="true"/>
+ </properties>
+ <tileset firstgid="1" name="debug" tilewidth="16" tileheight="16">
+  <image source="test-tiles.png"/>
+ </tileset>
+ <layer name="background" width="16" height="16" opacity="0.75">
+  <properties>
+    <property name="index" value="0" />
+  </properties>
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA2NgGAXogInK5rGh0aNgFAwWAADxvIrYAAQAAA==
+  </data>
+ </layer>
+ <layer name="obstacle" width="16" height="16">
+  <property name="index" value="1" />
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA82T4QqAIAyEZ1Jakb3/27YjB2MMMfvjwSHMfTp1BiIqg47sTOPKk/EXvWeCAnupLmqMDR7aa95RnVQumfye+vV6GM+PfEtgV/b9g5/p/UR4u+jEe3ncSTIx9Ia9J4/H3pvDezUmwwvbw0uN0h+658Stv4t59NIDVh+CwAAEAAA=
+  </data>
+ </layer>
+ <objectgroup name="objects" width="16" height="16">
+  <object name="chest1" type="GAME_OBJECT" x="128" y="208" width="16" height="32">
+   <properties>
+    <property name="image" value="door.png"/>
+   </properties>
+  </object>
+  <object name="resource1" type="GAME_OBJECT" x="64" y="32" width="16" height="32">
+   <properties>
+    <property name="image" value="door.png"/>
+    <property name="rtype" value="sulfur"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="entities" width="16" height="16">
+  <object name="char1" type="Entity" x="80" y="144" width="16" height="32">
+   <properties>
+    <property name="image" value="dude.png"/>
+    <property name="health" value="80"/>
+   </properties>
+  </object>
+   <object name="char2" type="Entity" x="20" y="14" width="16" height="32">
+     <properties>
+      <property name="image" value="dude.png"/>
+      <property name="health" value="100"/>
+     </properties>
+    </object>
+ </objectgroup>
+ <layer name="foreground" width="16" height="16" opacity="0.75">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA2NgGAWjYPABRiBmIoAJATYCeCD1EwMo1U8MAADF4i9MAAQAAA==
+  </data>
+ </layer>
+</map>

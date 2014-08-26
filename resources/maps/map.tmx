@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<map version="0.99b" orientation="orthogonal" width="50" height="50" tilewidth="32" tileheight="32">
+ <properties>
+  <property name="map_id" value="Test_Map"/>
+  <property name="display_name" value="Test Map"/>
+  <property name="is_main" value="true"/>
+ </properties>
+ <tileset name="ScrollerTiles" firstgid="1" tilewidth="32" tileheight="32">
+  <image source="sprites.png"/>
+  <tile id="1">
+   <properties>
+    <property name="blocked" value="true"/>
+   </properties>
+  </tile>
+ </tileset>
+ <layer name="Layer 0" width="50" height="50">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAAO3YSxICIQxFUWzd/5pdgZLPfYGmM8isDTmQQJXXGOM6LF7O2HENb37rOtG8UY9iDcpQtW/vH6FwRPfO4qw8j6zD+s2ullMcs96quhfV/ex1VNzFFQbSQ+XOOrKe3RyKnq6sXdnXq86DdCj6tNoRNdCmdnCOyt6iZ4OcjwoHWWvWEvl9Zf1WizXHZ2H9ZD3t8PWHtU/u4phZVjrIu/upDur9oN9Sj4N8t3d3WC2kQeWYrUsb6PlQOSz5o/dO1EEYSMespor/1ynHP4v6PIiZmtWlng2F5amOu/RWZg9Ib2bmFXGCQdHTHR0dHR0d3vgC8P5qohAnAAA=
+  </data>
+   <properties>
+       <property name="index" value="0" />
+     </properties>
+ </layer>
+ <objectgroup name="objects" width="16" height="16">
+   <object name="chest1" type="GAME_OBJECT" x="128" y="208" width="16" height="32">
+    <properties>
+     <property name="image" value="door.png"/>
+    </properties>
+   </object>
+   <object name="resource1" type="GAME_OBJECT" x="64" y="32" width="16" height="32">
+    <properties>
+     <property name="image" value="door.png"/>
+     <property name="rtype" value="sulfur"/>
+    </properties>
+   </object>
+  </objectgroup>
+  <objectgroup name="entities" width="16" height="16">
+   <object name="char1" type="Entity" x="80" y="144" width="16" height="32">
+    <properties>
+     <property name="image" value="dude.png"/>
+     <property name="health" value="80"/>
+    </properties>
+   </object>
+    <object name="char2" type="Entity" x="20" y="14" width="16" height="32">
+      <properties>
+       <property name="image" value="dude.png"/>
+       <property name="health" value="100"/>
+      </properties>
+     </object>
+  </objectgroup>
+</map>
