@@ -23,7 +23,7 @@ describe Imperium::Map::GameMap do
 
   describe '#layers' do
     it 'returns array of Layer' do
-      expect(map.layers).each { |l| l.to be_a Imperium::Map::Layer }
+      expect(map.layers).to all(be_an(Imperium::Map::Layer))
     end
   end
 
