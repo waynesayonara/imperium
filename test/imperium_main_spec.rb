@@ -13,16 +13,16 @@ describe Imperium::ImperiumMain do
       self.need_cursor = false
     end
 
-    def render_scene(window)
+    def render_scene
     end
 
-    def button_up(id, window)
+    def button_up(id)
     end
 
-    def button_down(id, window)
+    def button_down(id)
     end
 
-    def update(window)
+    def update
     end
 
     def needs_cursor?
@@ -33,19 +33,19 @@ describe Imperium::ImperiumMain do
   class ThrowingSceneImpl
     include Imperium::Scene
 
-    def render_scene(window)
+    def render_scene
       raise StandardError.new 'rendered!'
     end
 
-    def button_down(id, window)
+    def button_down(id)
       raise StandardError.new 'button down!'
     end
 
-    def button_up(id, window)
+    def button_up(id)
       raise StandardError.new 'button up!'
     end
 
-    def update(window)
+    def update
       raise StandardError.new 'updated!'
     end
   end

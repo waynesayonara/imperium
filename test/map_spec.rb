@@ -3,14 +3,14 @@ require_relative '../lib/imperium'
 
 describe Imperium::Map::GameMap do
 
+  $window = Imperium::ImperiumMain.new
   let(:target_class) { Imperium::Map::GameMap }
   let(:tmx_map) { Imperium::Map.load_map('../resources/maps/map.tmx') }
-  let(:game_window) { Imperium::ImperiumMain.new }
 
-  subject(:map) { target_class.new(game_window, tmx_map) }
+  subject(:map) { target_class.new(tmx_map) }
 
   describe '#initialize' do
-    it 'initializes with window and map path' do
+    it 'initializes with map path' do
       expect { map }.to_not raise_error
     end
   end
