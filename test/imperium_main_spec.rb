@@ -124,7 +124,6 @@ describe Imperium::ImperiumMain do
   it 'calculates whether cursor is needed using uppermost scene' do
     instance = Imperium::ImperiumMain.new
     regular_scene = SceneImpl.new
-    throwing_scene = ThrowingSceneImpl.new
     expect(instance.needs_cursor?).to be false
     instance.push_scene(regular_scene)
     expect(instance.needs_cursor?).to be false
