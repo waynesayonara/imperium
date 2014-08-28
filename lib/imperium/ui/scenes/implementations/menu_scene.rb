@@ -12,9 +12,9 @@ module Imperium
     # this method will be called from main window
     # it describes how concrete scene impl
     # should be rendered on a screen
-    def render_scene(window)
+    def render_scene
       data_model.each do |elem|
-        window.font.draw elem.text, elem.x, elem.y, 0
+        $window.font.draw elem.text, elem.x, elem.y, 0
       end
     end
   end

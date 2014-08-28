@@ -9,10 +9,10 @@ module Imperium
     $LOGGER = Log::GameLogger.new(STDOUT, 'GameLoader')
 
     #Starts new game using map
-    def load_game_from_map(window, map_path)
+    def load_game_from_map(map_path)
       $LOGGER.info "Loading map from file. Path: '#{map_path}'"
       begin
-        game_state = Game::GameState.new [Map::GameMap.new(window, Map.load_map(map_path))], Character.new
+        game_state = Game::GameState.new [Map::GameMap.new(Map.load_map(map_path))], Character::Character.new
         $LOGGER.info "Map with id: '#{game_state.current_map}' loaded successful."
         return game_state
       rescue Map::MapParseException, NoMethodError => e

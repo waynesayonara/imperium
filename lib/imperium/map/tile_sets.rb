@@ -2,13 +2,12 @@ module Imperium
   module Map
 
     class TileSets
-      def initialize(window, data, data_dir)
-        @window = window
+      def initialize(data, data_dir)
         @data = data
         @tilesets = {}
         @data.each do |t|
           tileset = Gosu::Image.load_tiles(
-              @window, File.join(data_dir, t.image), t.tilewidth, t.tileheight, true)
+              $window, File.join(data_dir, t.image), t.tilewidth, t.tileheight, true)
           @tilesets[t.firstgid] = {
               'data' => t,
               'tiles' => tileset
@@ -21,7 +20,7 @@ module Imperium
       end
 
       def get(index)
-        #return empty_tile if index == 0 || index.nil?
+        return empty_tile if index == 0 || index.nil?
         key = closest_key(index)
         @tilesets[key]['tiles'][index - key]
       end
@@ -36,12 +35,17 @@ module Imperium
 
       private
 
-      #def empty_tile
-      #  @empty_tile ||= EmptyTile.new
-      #end
+      def empty_tile
+        @empty_tile ||= EmptyTile.new
+      end
 
       def closest_key(index)
         @tilesets.keys.select { |k| k <= index }.max
+      end
+    end
+
+    class EmptyTile
+      def draw
       end
     end
   end

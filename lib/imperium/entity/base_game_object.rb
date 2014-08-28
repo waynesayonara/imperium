@@ -5,24 +5,24 @@ module Imperium
   #Base game object. Each game object (npc, castle, chest..) should extend this class
   class BaseGameObject
 
-    attr_accessor :x_coordinate, :y_coordinate, :type, :name
+    attr_accessor :x, :y, :type, :name
 
     def initialize(x, y, type, name)
-      @x_coordinate = x
-      @y_coordinate = y
+      @x = x
+      @y = y
       @type = type
       @name = name
     end
 
     def move(x, y)
-      @x_coordinate += x
-      @y_coordinate += y
+      @x += x
+      @y += y
     end
 
-    protected :move
+    public :move
 
     def to_s
-      "Name: #{@name}, Type: #{@type}, Position: #{@x_coordinate}, #{@y_coordinate}"
+      "Name: #{@name}, Type: #{@type}, Position: #{@x}, #{@y}"
     end
 
   end

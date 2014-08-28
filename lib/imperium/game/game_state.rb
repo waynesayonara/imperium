@@ -16,6 +16,14 @@ module Imperium
         @game_maps.detect { |map| map.map_id == @current_map }
       end
 
+      def render_map
+        get_current_map.draw(@character.x, @character.y)
+      end
+
+      def render_char
+        @character.draw
+      end
+
     end
   end
 end

@@ -1,4 +1,5 @@
 require_relative 'imperium'
 
-window = Imperium::ImperiumMain.new
-window.show
+$window = Imperium::ImperiumMain.new
+$window.push_scene(Imperium::GameScene.new(Imperium::Game.load_game_from_map(Imperium::Map::TEST_PATH)))
+$window.show

@@ -11,17 +11,17 @@ module Imperium
       attr_reader :map_id, :display_name, :width, :height, :entities, :objects, :layers, :tilesets, :is_main
 
       # GameMap constructor.
-      # Parameters: Gosu::Window, Tmx::Map.
-      def initialize(window, map)
+      # Parameters: Tmx::Map.
+      def initialize(map)
         @map_id = extract_property map, Const::MAP_ID
         @display_name = extract_property map, Const::MAP_DISPLAY_NAME
         @width = map.width * map.tilewidth
         @height = map.height * map.tileheight
         @is_main = extract_property(map, Const::MAP_IS_MAIN) == 'true'
-        @tilesets = TileSets.new(window, map.tilesets, '../resources/maps/') #TODO: Implement global resource reader
+        @tilesets = TileSets.new(map.tilesets, '../resources/maps/')
 
         fill_map_objects map.object_groups
-        fill_layers map, window
+        fill_layers map
       end
 
       # Read all OBJECTS from parsed map.
@@ -41,9 +41,7 @@ module Imperium
         @entities = extract(get_objects_by_type(object_groups, 'entities')) {
             |o| Imperium::GameEntity.const_get(o.type).new(o.x, o.y, o.type, o.name, o.properties.tap { |x| x.delete("image") })
         }
-        #@objects = extract(get_objects_by_type(object_groups, 'objects')) {
-        #    |o| Imperium::GameEntity.const_get(o.type).new(o.x, o.y, o.type, o.name, o.properties.tap { |x| x.delete("image") })
-        #}
+        #TODO: Parse objects from map
       end
 
       def get_objects_by_type(object_groups, type)
@@ -54,10 +52,10 @@ module Imperium
         map.properties[property]
       end
 
-      def fill_layers(map, window)
+      def fill_layers(map)
         @layers = []
         map.layers.each do |l|
-          @layers << Layer.new(l, map, window)
+          @layers << Layer.new(l, map)
         end
       end
 

@@ -9,24 +9,20 @@ require_relative 'character/character'
 require_relative 'map/loader/tmx_map_loader'
 require_relative 'game/game_state'
 require_relative 'game/game_loader'
+require_relative '../../lib/imperium/ui/scenes/implementations/game_scene'
 
 module Imperium
   class ImperiumMain < Gosu::Window
-    DEFAULT_WINDOW_WIDTH = 640
-    DEFAULT_WINDOW_HEIGHT = 480
-    DEFAULT_MAP_SCROLLING_SPEED = 3
+    DEFAULT_WINDOW_WIDTH = 1024
+    DEFAULT_WINDOW_HEIGHT = 800
 
     def initialize
       super DEFAULT_WINDOW_WIDTH, DEFAULT_WINDOW_HEIGHT, fullscreen=false
       self.caption = "Imperium v.#{Imperium::VERSION}"
-      @game = Game.load_game_from_map self, Map::TEST_PATH
+      #@game = Game.load_game_from_map Map::TEST_PATH
 
       @scenes = []
-      @font = Gosu::Font.new(self, Gosu::default_font_name, 20)
-
       #TODO: Implement Camera
-      #Camera position
-      @x = @y = 0
     end
 
     public
@@ -34,17 +30,10 @@ module Imperium
       @font
     end
 
-    def current_map
-      @game.get_current_map
-    end
-
     def draw
       if(!@scenes.empty?)
-        @scenes[-1].render_scene(self)
+        @scenes[-1].render_scene
       end
-
-      #TODO: Move to scene & camera rendering
-      current_map.draw(@x, @y)
     end
 
     # Pops uppermost scene and returns it
@@ -71,27 +60,21 @@ module Imperium
     # Button press handler
     def button_down(id)
       if(!@scenes.empty?)
-        @scenes[-1].button_down(id, self)
+        @scenes[-1].button_down(id)
       end
     end
 
     # Button press handler
     def button_up(id)
       if(!@scenes.empty?)
-        @scenes[-1].button_up(id, self)
+        @scenes[-1].button_up(id)
       end
     end
 
     def update
       if(!@scenes.empty?)
-        @scenes[-1].update(self)
+        @scenes[-1].update
       end
-
-      #TODO: Move to scene & camera rendering
-      @x -= DEFAULT_MAP_SCROLLING_SPEED if button_down?(Gosu::KbLeft) && @x > 0
-      @x += DEFAULT_MAP_SCROLLING_SPEED if button_down?(Gosu::KbRight) && @x < current_map.width - DEFAULT_WINDOW_WIDTH
-      @y -= DEFAULT_MAP_SCROLLING_SPEED if button_down?(Gosu::KbUp) && @y > 0
-      @y += DEFAULT_MAP_SCROLLING_SPEED if button_down?(Gosu::KbDown) && @y < current_map.height - DEFAULT_WINDOW_HEIGHT
     end
 
     def needs_cursor?

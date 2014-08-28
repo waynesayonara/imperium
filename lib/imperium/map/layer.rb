@@ -4,8 +4,7 @@ module Imperium
 
       attr_reader :index, :layer
 
-      def initialize(layer, options, window)
-        @window = window
+      def initialize(layer, options)
         @index = layer.properties["index"]
         @layer = layer
         @options = options
@@ -16,11 +15,11 @@ module Imperium
       end
 
       def screen_width_in_tiles
-        (@window.width / tile_width.to_f).ceil
+        ($window.width / tile_width.to_f).ceil
       end
 
       def screen_height_in_tiles
-        (@window.height / tile_height.to_f).ceil
+        ($window.height / tile_height.to_f).ceil
       end
 
       private
@@ -50,13 +49,11 @@ module Imperium
       end
 
       def within_map_range(x, y)
-        (0..map_width - 1).include?(x) && (0..map_height - 1).include?(y)
+        x.between?(0, map_width - 1) && y.between?(0, map_height - 1)
       end
 
       def within_screen_range(x, y)
-        range_x = (x - tile_width..@window.width + x + tile_width)
-        range_y = (y..@window.height + y + tile_height)
-        range_x.include?(x) && range_y.include?(y)
+        x.between?(x - tile_width, $window.width + x + tile_width) && y.between?(y, $window.height + y + tile_height)
       end
 
       def transpose_tile_x(x, off_x)

@@ -19,22 +19,22 @@ module Imperium
       @data_model = model
     end
 
-    def button_up(id, window)
+    def button_up(id)
       raise NotImplementedError.new 'Must be overridden in derived classes'
     end
 
-    def button_down(id, window)
+    def button_down(id)
       raise NotImplementedError.new 'Must be overridden in derived classes'
     end
 
     # this method will be called from main window
     # it describes how concrete scene impl
     # should be rendered on a screen
-    def render_scene(window)
+    def render_scene
       raise NotImplementedError.new 'Must be overridden in derived classes'
     end
 
-    def update(window)
+    def update
       raise NotImplementedError.new 'Must be overridden in derived classes'
     end
 
