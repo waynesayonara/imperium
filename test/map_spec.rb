@@ -3,7 +3,6 @@ require_relative '../lib/imperium'
 
 describe Imperium::Map::GameMap do
 
-  $window = Imperium::ImperiumMain.new
   let(:target_class) { Imperium::Map::GameMap }
   let(:tmx_map) { Imperium::Map.load_map('../resources/maps/map.tmx') }
 

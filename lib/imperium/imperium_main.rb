@@ -21,7 +21,6 @@ module Imperium
       self.caption = "Imperium v.#{Imperium::VERSION}"
 
       @scenes = []
-      #TODO: Implement Camera
     end
 
     public
