@@ -1,4 +1,4 @@
-require_relative '../../../../lib/imperium'
+require_relative '../../../../imperium'
 
 module Imperium
   module DataModels
