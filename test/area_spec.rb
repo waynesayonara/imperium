@@ -45,7 +45,7 @@ describe Imperium::Area do
     included_point4 = Imperium::Point.new(12,17)
     included_point5 = Imperium::Point.new(5,5)
     included_point6 = Imperium::Point.new(3,2)
-    included_point6 = Imperium::Point.new(10,10)
+    included_point7 = Imperium::Point.new(10,10)
     excluded_point1 = Imperium::Point.new(1,1)
     excluded_point2 = Imperium::Point.new(1,10)
     excluded_point3 = Imperium::Point.new(10,1)
@@ -56,6 +56,16 @@ describe Imperium::Area do
     expect { area.includes?(Array.new) }.to raise_error ArgumentError
 
     expect(area.includes?(included_point1)).to be true
-
+    expect(area.includes?(included_point2)).to be true
+    expect(area.includes?(included_point3)).to be true
+    expect(area.includes?(included_point4)).to be true
+    expect(area.includes?(included_point5)).to be true
+    expect(area.includes?(included_point6)).to be true
+    expect(area.includes?(included_point7)).to be true
+    expect(area.includes?(excluded_point1)).to be false
+    expect(area.includes?(excluded_point2)).to be false
+    expect(area.includes?(excluded_point3)).to be false
+    expect(area.includes?(excluded_point4)).to be false
+    expect(area.includes?(excluded_point5)).to be false
   end
 end
