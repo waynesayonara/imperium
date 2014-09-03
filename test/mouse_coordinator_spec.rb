@@ -6,12 +6,12 @@ describe Imperium::MouseCoordinator do
   class MouseCoordinatorImpl
     include Imperium::MouseCoordinator
 
-    def process_movement_public(mouse_x, mouse_y)
-      process_movement(mouse_x, mouse_y)
+    def process_movement_public(point)
+      process_movement(point)
     end
 
-    def process_click_public(button_id, mouse_x, mouse_y)
-      process_click(button_id, mouse_x, mouse_y)
+    def process_click_public(button_id, point)
+      process_click(button_id, point)
     end
   end
 
@@ -24,12 +24,13 @@ describe Imperium::MouseCoordinator do
 
     @id
 
-    def initialize(id, x, y, width, height)
+    def initialize(id, area)
+      if(area.nil? || !area.is_a?(Imperium::Area))
+        raise ArgumentError.new "Argument can only be a non-nil instance of #{Imperium::Area}"
+      end
+
       @id = id
-      self.x = x
-      self.y = y
-      self.width = width
-      self.height = height
+      self.area = area
     end
 
     def is_active=(value)
@@ -88,13 +89,18 @@ describe Imperium::MouseCoordinator do
   end
 
   it 'activates hover events on controls' do
-    throwingControl1 = ThrowingSizableControlImpl.new(1, 5, 3, 7, 9)
+    top_point = Imperium::Point.new(5, 3)
+    area = Imperium::Area.new(top_point, 7, 9)
+    throwingControl1 = ThrowingSizableControlImpl.new(1, area)
     instance = MouseCoordinatorImpl.new
     instance.add_control(throwingControl1)
 
-    expect { instance.process_movement_public(1, 1) }.not_to raise_error
-    expect { instance.process_movement_public(10, 10) }.to raise_error(StandardError, 'hover on at 1!')
-    expect { instance.process_movement_public(1, 1) }.to raise_error(StandardError, 'hover off at 1!')
+    off_point = Imperium::Point.new(1, 1)
+    on_point = Imperium::Point.new(10, 10)
+
+    expect { instance.process_movement_public(off_point) }.not_to raise_error
+    expect { instance.process_movement_public(on_point) }.to raise_error(StandardError, 'hover on at 1!')
+    expect { instance.process_movement_public(off_point) }.to raise_error(StandardError, 'hover off at 1!')
   end
 
 end

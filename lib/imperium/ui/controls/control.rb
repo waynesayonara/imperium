@@ -3,53 +3,18 @@ require_relative '../../../../lib/imperium'
 module Imperium
   module Control
     @is_active
-    @x
-    @y
-    @height
-    @width
+    @area
 
-    def height
-      @height
+    def area
+      @area
     end
 
-    def height=(value)
-      if(value < 0)
-        raise ArgumentError.new 'value cannot be negative'
+    def area=(value)
+      if(value.nil? || !value.is_a?(Imperium::Area))
+        raise ArgumentError.new "Argument can only be a non-nil instance of #{Imperium::Area}"
       end
-      @height = value
-    end
 
-    def width
-      @width
-    end
-
-    def width=(value)
-      if(value < 0)
-        raise ArgumentError.new 'value cannot be negative'
-      end
-      @width = value
-    end
-
-    def y
-      @y
-    end
-
-    def y=(value)
-      if(value < 0)
-        raise ArgumentError.new 'value cannot be negative'
-      end
-      @y = value
-    end
-
-    def x
-      @x
-    end
-
-    def x=(value)
-      if(value < 0)
-        raise ArgumentError.new 'value cannot be negative'
-      end
-      @x = value
+      @area = value
     end
 
     def is_active

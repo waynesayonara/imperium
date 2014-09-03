@@ -57,35 +57,21 @@ describe Imperium::Control do
     expect(instance).to respond_to(:mouse_down)
   end
 
-  it 'has size and coordinates' do
+  it 'has area' do
     instance = ControlImpl.new
-    expect(instance.x).to be_nil
-    expect(instance.y).to be_nil
-    expect(instance.height).to be_nil
-    expect(instance.width).to be_nil
+    expect(instance.area).to be_nil
 
-    instance.x = 12;
-    instance.y = 13
-    instance.height = 10
-    instance.width = 20
-
-    expect(instance.x).to be == 12
-    expect(instance.y).to be == 13
-    expect(instance.height).to be == 10
-    expect(instance.width).to be == 20
+    top_point = Imperium::Point.new(12, 13)
+    area = Imperium::Area.new(top_point, 20, 10)
+    instance.area = area
+    expect(instance.area).to be == area
   end
 
-  it 'cannot set negative coordinate or size' do
+  it 'cannot set invalid area' do
     instance = ControlImpl.new
-    expect(instance.x).to be_nil
-    expect(instance.y).to be_nil
-    expect(instance.height).to be_nil
-    expect(instance.width).to be_nil
 
-    expect { instance.x = -12 }.to raise_error ArgumentError
-    expect { instance.y = -13 }.to raise_error ArgumentError
-    expect { instance.height = -10 }.to raise_error ArgumentError
-    expect { instance.width = -20 }.to raise_error ArgumentError
+    expect { instance.area = nil }.to raise_error ArgumentError
+    expect { instance.area = Array.new }.to raise_error ArgumentError
   end
 
   it 'activates on hover' do

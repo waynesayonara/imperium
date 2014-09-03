@@ -28,9 +28,13 @@ module Imperium
     end
 
     protected
-    def process_movement(mouse_x, mouse_y)
+    def process_movement(point)
+      if(point.nil? || !point.is_a?(Imperium::Point))
+        raise ArgumentError.new "Argument can only be a non-nil instance of #{Imperium::Point}"
+      end
+
       ui_controls.each do |control|
-        if(is_coord_inside_area(mouse_x, mouse_y, control.x, control.y, control.width, control.height))
+        if(control.area.includes?(point))
           control.hover(true)
         elsif(control.is_active)
           control.hover(false)
@@ -39,24 +43,9 @@ module Imperium
 
     end
 
-    def process_click(button_id, mouse_x, mouse_y)
-    end
-
-    protected
-    def is_coord_inside_area(coord_x, coord_y, area_top_x, area_top_y, area_width, area_height)
-      if(coord_x.nil? || coord_y.nil? || area_top_x.nil? || area_top_y.nil? || area_height.nil? || area_width.nil?)
-        raise ArgumentError.new 'Cannot calculate with nil arguments'
-      end
-
-      if(coord_x < 0 || coord_y < 0 || area_top_x < 0 || area_top_y < 0 || area_height < 0 || area_width < 0)
-        raise ArgumentError.new 'Cannot calculate with negative arguments'
-      end
-
-      if(coord_x > area_top_x && coord_x < area_top_x + area_width &&
-         coord_y > area_top_y && coord_y < area_top_y + area_height)
-        return true
-      else
-        return false
+    def process_click(button_id, point)
+      if(point.nil? || !point.is_a?(Imperium::Point))
+        raise ArgumentError.new "Argument can only be a non-nil instance of #{Imperium::Point}"
       end
     end
   end

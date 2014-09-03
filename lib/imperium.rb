@@ -1,6 +1,8 @@
 require_relative './imperium/version'
 require_relative './imperium/imperium_main'
 require_relative '../lib/imperium/ui/scenes/scene'
+require_relative '../lib/imperium/core/point'
+require_relative '../lib/imperium/core/area'
 require_relative '../lib/imperium/ui/controls/control'
 require_relative '../lib/imperium/ui/scenes/mouse_coordinator'
 require_relative '../lib/imperium/ui/scenes/implementations/menu_scene'
