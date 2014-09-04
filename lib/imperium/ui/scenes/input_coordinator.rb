@@ -1,7 +1,7 @@
 require_relative '../../../../lib/imperium'
 
 module Imperium
-  module MouseCoordinator
+  module InputCoordinator
     @controls
 
     def ui_controls

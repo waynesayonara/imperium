@@ -2,9 +2,9 @@ require 'rspec'
 require_relative '../lib/imperium'
 require_relative 'spec_helper'
 
-describe Imperium::MouseCoordinator do
-  class MouseCoordinatorImpl
-    include Imperium::MouseCoordinator
+describe Imperium::InputCoordinator do
+  class InputCoordinatorImpl
+    include Imperium::InputCoordinator
 
     def process_movement_public(point)
       process_movement(point)
@@ -60,7 +60,7 @@ describe Imperium::MouseCoordinator do
   end
 
   it 'adds and removes controls' do
-    instance = MouseCoordinatorImpl.new
+    instance = InputCoordinatorImpl.new
     expect(instance.ui_controls).to_not be_nil
     validControl = ControlImpl.new
     instance.add_control(validControl)
@@ -76,7 +76,7 @@ describe Imperium::MouseCoordinator do
   end
 
   it 'cannot add control twice' do
-    instance = MouseCoordinatorImpl.new
+    instance = InputCoordinatorImpl.new
     firstControl = ControlImpl.new
     secondControl = ControlImpl.new
 
@@ -91,16 +91,38 @@ describe Imperium::MouseCoordinator do
   it 'activates hover events on controls' do
     top_point = Imperium::Point.new(5, 3)
     area = Imperium::Area.new(top_point, 7, 9)
+    area2 = Imperium::Area.new(top_point, 1, 1)
     throwingControl1 = ThrowingSizableControlImpl.new(1, area)
-    instance = MouseCoordinatorImpl.new
+    throwingControl2 = ThrowingSizableControlImpl.new(2, area)
+    instance = InputCoordinatorImpl.new
     instance.add_control(throwingControl1)
+    instance.add_control(throwingControl2)
 
     off_point = Imperium::Point.new(1, 1)
     on_point = Imperium::Point.new(10, 10)
 
     expect { instance.process_movement_public(off_point) }.not_to raise_error
+    expect(throwingControl1.is_active).to be false
     expect { instance.process_movement_public(on_point) }.to raise_error(StandardError, 'hover on at 1!')
+    expect(throwingControl1.is_active).to be true
     expect { instance.process_movement_public(off_point) }.to raise_error(StandardError, 'hover off at 1!')
+    expect(throwingControl1.is_active).to be false
   end
 
+  it 'cannot have more than one active control' do
+    instance = InputCoordinatorImpl.new
+    top_point = Imperium::Point.new(5, 3)
+    area = Imperium::Area.new(top_point, 7, 9)
+    firstControl = ControlImpl.new
+    firstControl.area = area
+
+    top_point2 = Imperium::Point.new(15, 20)
+    area2 = Imperium::Area.new(top_point2, 10, 11)
+    secondControl = ControlImpl.new
+    secondControl.area = area2
+
+    instance.add_control(firstControl)
+    instance.add_control(secondControl)
+
+  end
 end

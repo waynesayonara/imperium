@@ -32,25 +32,21 @@ module Imperium
       @is_active = active
     end
 
-    # Can be overridden in derived classes
     public
     def click(button_id)
       on_click(button_id)
     end
 
-    # Can be overridden in derived classes
     def mouse_up(button_id)
       self.is_active= false
       self.on_mouse_up(button_id)
     end
 
-    # Can be overridden in derived classes
     def mouse_down(button_id)
       self.is_active= true
       self.on_mouse_down(button_id)
     end
 
-    # Can be overridden in derived classes
     def hover(is_on)
       self.is_active=is_on
 
@@ -61,19 +57,24 @@ module Imperium
       end
     end
 
+    # Can be overridden in derived classes
     protected
     def on_hover_activated
     end
 
+    # Can be overridden in derived classes
     def on_hover_deactivated
     end
 
+    # Can be overridden in derived classes
     def on_mouse_up(button_id)
     end
 
+    # Can be overridden in derived classes
     def on_mouse_down(button_id)
     end
 
+    # Can be overridden in derived classes
     def on_click(button_id)
     end
   end
