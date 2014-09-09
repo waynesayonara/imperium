@@ -26,7 +26,7 @@ module Imperium
       data_model.game_data.render_char
     end
 
-    def update
+    def on_update(point)
       $window.caption = "Imperium v.#{Imperium::VERSION}. FPS: #{Gosu.fps}."
 
       x = y = 0
@@ -35,12 +35,6 @@ module Imperium
       y -= DEFAULT_MAP_SCROLLING_SPEED if $window.button_down?(Gosu::KbUp) && get_char.y > 0
       y += DEFAULT_MAP_SCROLLING_SPEED if $window.button_down?(Gosu::KbDown) #&& @y < current_map.height
       @data_model.game_data.character.move(x, y)
-    end
-
-    def button_down(id)
-    end
-
-    def button_up(id)
     end
   end
 

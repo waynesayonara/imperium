@@ -26,4 +26,12 @@ describe Imperium::Point do
     expect { Imperium::Point.new(nil, 5) }.to raise_error ArgumentError
     expect { Imperium::Point.new(3, Array.new) }.to raise_error ArgumentError
   end
+
+  it 'should return false for comparing unequal points' do
+     expect(Imperium::Point.new(3,5)).not_to be eql Imperium::Point.new(4,5)
+  end
+
+  it 'should return true for comparing equal points' do
+    expect(Imperium::Point.new(3,5)).to be == Imperium::Point.new(3,5)
+  end
 end

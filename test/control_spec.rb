@@ -51,10 +51,9 @@ describe Imperium::Control do
 
   it 'responds to event methods' do
     instance = ControlImpl.new
-    expect(instance).to respond_to(:click)
     expect(instance).to respond_to(:hover)
-    expect(instance).to respond_to(:mouse_up)
-    expect(instance).to respond_to(:mouse_down)
+    expect(instance).to respond_to(:button_up)
+    expect(instance).to respond_to(:button_down)
   end
 
   it 'has area' do
@@ -94,22 +93,17 @@ describe Imperium::Control do
   it 'activates on mouse_down and deactivates on mouse_up' do
     instance = ControlImpl.new
     expect(instance.is_active).to be false
-    instance.mouse_down(Gosu::MsLeft)
+    instance.button_down(Gosu::MsLeft)
     expect(instance.is_active).to be true
-    instance.mouse_up(Gosu::MsLeft)
+    instance.button_up(Gosu::MsLeft)
     expect(instance.is_active).to be false
   end
 
   it 'calls mouse_up and mouse_down implementations on event' do
     instance = ThrowingControlImpl.new
-    expect { instance.mouse_down(Gosu::MsLeft) }.to raise_error(StandardError, 'mouse down!')
+    expect { instance.button_down(Gosu::MsLeft) }.to raise_error(StandardError, 'mouse down!')
     expect(instance.is_active).to be true
-    expect { instance.mouse_up(Gosu::MsLeft) }.to raise_error(StandardError, 'mouse up!')
+    expect { instance.button_up(Gosu::MsLeft) }.to raise_error(StandardError, 'mouse up!')
     expect(instance.is_active).to be false
-  end
-
-  it 'calls click implementation on event' do
-    instance = ThrowingControlImpl.new
-    expect { instance.click(Gosu::MsLeft) }.to raise_error(StandardError, 'click!')
   end
 end

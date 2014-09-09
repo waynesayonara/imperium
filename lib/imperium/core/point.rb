@@ -44,5 +44,9 @@ module Imperium
 
       @y = value
     end
+
+    def ==(another_point)
+      return self.x == another_point.x && self.y == another_point.y
+    end
   end
 end

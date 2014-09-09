@@ -33,16 +33,12 @@ module Imperium
     end
 
     public
-    def click(button_id)
-      on_click(button_id)
-    end
-
-    def mouse_up(button_id)
+    def button_up(button_id)
       self.is_active= false
       self.on_mouse_up(button_id)
     end
 
-    def mouse_down(button_id)
+    def button_down(button_id)
       self.is_active= true
       self.on_mouse_down(button_id)
     end
@@ -72,10 +68,6 @@ module Imperium
 
     # Can be overridden in derived classes
     def on_mouse_down(button_id)
-    end
-
-    # Can be overridden in derived classes
-    def on_click(button_id)
     end
   end
 end

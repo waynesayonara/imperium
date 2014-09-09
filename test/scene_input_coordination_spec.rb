@@ -2,17 +2,9 @@ require 'rspec'
 require_relative '../lib/imperium'
 require_relative 'spec_helper'
 
-describe Imperium::InputCoordinator do
-  class InputCoordinatorImpl
-    include Imperium::InputCoordinator
-
-    def process_movement_public(point)
-      process_movement(point)
-    end
-
-    def process_click_public(button_id, point)
-      process_click(button_id, point)
-    end
+describe Imperium::Scene do
+  class SceneImpl
+    include Imperium::Scene
   end
 
   class ControlImpl
@@ -33,6 +25,10 @@ describe Imperium::InputCoordinator do
       self.area = area
     end
 
+    def is_active
+      super
+    end
+
     def is_active=(value)
       super value
     end
@@ -47,20 +43,16 @@ describe Imperium::InputCoordinator do
     end
 
     def on_mouse_down(button_id)
-      raise StandardError.new "mouse down at #{@id}!"
+      raise StandardError.new "button down at #{@id}!"
     end
 
     def on_mouse_up(button_id)
-      raise StandardError.new "mouse up at #{@id}!"
-    end
-
-    def on_click(button_id)
-      raise StandardError.new "click at #{@id}!"
+      raise StandardError.new "button up at #{@id}!"
     end
   end
 
   it 'adds and removes controls' do
-    instance = InputCoordinatorImpl.new
+    instance = SceneImpl.new
     expect(instance.ui_controls).to_not be_nil
     validControl = ControlImpl.new
     instance.add_control(validControl)
@@ -76,7 +68,7 @@ describe Imperium::InputCoordinator do
   end
 
   it 'cannot add control twice' do
-    instance = InputCoordinatorImpl.new
+    instance = SceneImpl.new
     firstControl = ControlImpl.new
     secondControl = ControlImpl.new
 
@@ -91,38 +83,40 @@ describe Imperium::InputCoordinator do
   it 'activates hover events on controls' do
     top_point = Imperium::Point.new(5, 3)
     area = Imperium::Area.new(top_point, 7, 9)
+    throwingControl1 = ThrowingSizableControlImpl.new(1, area)
+    instance = SceneImpl.new
+    instance.add_control(throwingControl1)
+
+    off_point = Imperium::Point.new(1, 1)
+    on_point = Imperium::Point.new(10, 10)
+
+    expect { instance.update(off_point) }.not_to raise_error
+    expect(throwingControl1.is_active).to be false
+    expect { instance.update(on_point) }.to raise_error(StandardError, 'hover on at 1!')
+    expect(throwingControl1.is_active).to be true
+    expect { instance.update(off_point) }.to raise_error(StandardError, 'hover off at 1!')
+    expect(throwingControl1.is_active).to be false
+  end
+
+  it 'activates button_up/button_down on controls' do
+    top_point = Imperium::Point.new(5, 3)
+    area = Imperium::Area.new(top_point, 7, 9)
     area2 = Imperium::Area.new(top_point, 1, 1)
     throwingControl1 = ThrowingSizableControlImpl.new(1, area)
     throwingControl2 = ThrowingSizableControlImpl.new(2, area)
-    instance = InputCoordinatorImpl.new
+    instance = SceneImpl.new
     instance.add_control(throwingControl1)
     instance.add_control(throwingControl2)
 
     off_point = Imperium::Point.new(1, 1)
     on_point = Imperium::Point.new(10, 10)
 
-    expect { instance.process_movement_public(off_point) }.not_to raise_error
-    expect(throwingControl1.is_active).to be false
-    expect { instance.process_movement_public(on_point) }.to raise_error(StandardError, 'hover on at 1!')
+    expect { instance.button_up(Gosu::Gp0Down, off_point) }.not_to raise_error
+    expect { instance.button_down(Gosu::Gp0Down, on_point) }.to raise_error(StandardError, 'button down at 1!')
     expect(throwingControl1.is_active).to be true
-    expect { instance.process_movement_public(off_point) }.to raise_error(StandardError, 'hover off at 1!')
+    expect(throwingControl2.is_active).to be false
+    expect { instance.button_up(Gosu::Gp0Down, on_point) }.to raise_error(StandardError, 'button up at 1!')
     expect(throwingControl1.is_active).to be false
-  end
-
-  it 'cannot have more than one active control' do
-    instance = InputCoordinatorImpl.new
-    top_point = Imperium::Point.new(5, 3)
-    area = Imperium::Area.new(top_point, 7, 9)
-    firstControl = ControlImpl.new
-    firstControl.area = area
-
-    top_point2 = Imperium::Point.new(15, 20)
-    area2 = Imperium::Area.new(top_point2, 10, 11)
-    secondControl = ControlImpl.new
-    secondControl.area = area2
-
-    instance.add_control(firstControl)
-    instance.add_control(secondControl)
-
+    expect(throwingControl2.is_active).to be false
   end
 end

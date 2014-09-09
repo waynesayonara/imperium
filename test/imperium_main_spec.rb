@@ -16,15 +16,6 @@ describe Imperium::ImperiumMain do
     def render_scene
     end
 
-    def button_up(id)
-    end
-
-    def button_down(id)
-    end
-
-    def update
-    end
-
     def needs_cursor?
       self.need_cursor
     end
@@ -37,15 +28,15 @@ describe Imperium::ImperiumMain do
       raise StandardError.new 'rendered!'
     end
 
-    def button_down(id)
+    def on_button_down(button_id, point)
       raise StandardError.new 'button down!'
     end
 
-    def button_up(id)
+    def on_button_up(button_id, point)
       raise StandardError.new 'button up!'
     end
 
-    def update
+    def on_update(point)
       raise StandardError.new 'updated!'
     end
   end

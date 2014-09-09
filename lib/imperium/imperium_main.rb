@@ -58,20 +58,20 @@ module Imperium
     # Button press handler
     def button_down(id)
       if(!@scenes.empty?)
-        @scenes[-1].button_down(id)
+        @scenes[-1].button_down(id, get_current_cursor_point)
       end
     end
 
     # Button press handler
     def button_up(id)
       if(!@scenes.empty?)
-        @scenes[-1].button_up(id)
+        @scenes[-1].button_up(id, get_current_cursor_point)
       end
     end
 
     def update
       if(!@scenes.empty?)
-        @scenes[-1].update
+        @scenes[-1].update(get_current_cursor_point)
       end
     end
 
@@ -96,6 +96,12 @@ module Imperium
 
     def scene_popped(scene)
       draw
+    end
+
+    def get_current_cursor_point
+      x = [0, mouse_x.to_i].max
+      y = [0, mouse_y.to_i].max
+      return Imperium::Point.new(x, y)
     end
   end
 end
