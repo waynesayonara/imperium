@@ -10,7 +10,7 @@ module Imperium
       #self.data_model_type = Imperium::DataModels::MenuSceneDataModel
       #self.data_model = data_model
 
-      @splash = Gosu::Image.new($window, '/home/wayne-msi/IdeaProjects/imperium/resources/menu/Imperium_splash_1024_800.png', false)
+      @splash = Gosu::Image.new($window, '../resources/menu/Imperium_splash_1024_800.png', false)
     end
 
     # this method will be called from main window
