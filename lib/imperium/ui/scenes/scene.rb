@@ -44,6 +44,8 @@ module Imperium
       end
 
       ui_controls << new_control
+
+      new_control.render_control
     end
 
     # Removes control from collection
@@ -88,6 +90,7 @@ module Imperium
       if(@prev_mouse_position.nil? || @prev_mouse_position != point)
         @prev_mouse_position = Imperium::Point.new(point.x, point.y)
         process_movement(point)
+        on_mouse_move(point)
       end
 
       on_update(point)
@@ -114,7 +117,6 @@ module Imperium
         end
       end
 
-      on_mouse_move(point)
     end
 
     # Derived classes should call method whenever

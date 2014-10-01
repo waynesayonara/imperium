@@ -13,6 +13,10 @@ module Imperium
         raise ArgumentError.new 'Input menu elements cannot be nil' if menu_elements.nil?
         raise ArgumentError.new 'Input background cannot be nil' if background.nil?
 
+        if !background.is_a?(Gosu::Image)
+          raise ArgumentError.new "Input background must represent an instance of #{Gosu::Image}"
+        end
+
         if !menu_elements.is_a?(Hash) || menu_elements.empty?
           raise ArgumentError.new 'Input menu elements must represent a non-empty hash'
         end

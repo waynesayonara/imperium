@@ -9,6 +9,9 @@ describe Imperium::Scene do
 
   class ControlImpl
     include Imperium::Control
+
+    def render_control
+    end
   end
 
   class ThrowingSizableControlImpl
@@ -23,6 +26,10 @@ describe Imperium::Scene do
 
       @id = id
       self.area = area
+    end
+
+    def render_control
+      raise StandardError.new "rendered at #{@id}!"
     end
 
     def is_active
@@ -85,7 +92,7 @@ describe Imperium::Scene do
     area = Imperium::Area.new(top_point, 7, 9)
     throwingControl1 = ThrowingSizableControlImpl.new(1, area)
     instance = SceneImpl.new
-    instance.add_control(throwingControl1)
+    expect{ instance.add_control(throwingControl1) }.to raise_error(StandardError, 'rendered at 1!')
 
     off_point = Imperium::Point.new(1, 1)
     on_point = Imperium::Point.new(10, 10)
@@ -105,8 +112,8 @@ describe Imperium::Scene do
     throwingControl1 = ThrowingSizableControlImpl.new(1, area)
     throwingControl2 = ThrowingSizableControlImpl.new(2, area)
     instance = SceneImpl.new
-    instance.add_control(throwingControl1)
-    instance.add_control(throwingControl2)
+    expect{ instance.add_control(throwingControl1) }.to raise_error(StandardError, 'rendered at 1!')
+    expect{ instance.add_control(throwingControl2) }.to raise_error(StandardError, 'rendered at 2!')
 
     off_point = Imperium::Point.new(1, 1)
     on_point = Imperium::Point.new(10, 10)

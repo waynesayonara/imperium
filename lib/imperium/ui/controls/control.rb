@@ -53,6 +53,11 @@ module Imperium
       end
     end
 
+    # Draws control
+    def render_control
+      raise NotImplementedError.new 'Must be overridden in derived classes'
+    end
+
     # Can be overridden in derived classes
     protected
     def on_hover_activated

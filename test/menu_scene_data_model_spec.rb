@@ -3,14 +3,21 @@ require_relative '../lib/imperium'
 require_relative 'spec_helper'
 
 describe Imperium::DataModels::MenuSceneDataModel do
+
+  before(:all) do
+    @valid_image = Gosu::Image.new($window, '../resources/menu/exit.png', false)
+    @valid_area = Imperium::Area.new(Imperium::Point.new(1, 1), 1, 1)
+    @valid_action =  lambda { puts 'action performed!' }
+  end
+
   it 'can be initialized with a collection of MenuSceneElementDataModel' do
+    valid_elem_data_model =
+            {
+                'elem1' => Imperium::DataModels::MenuSceneElementDataModel.new(@valid_area, @valid_image, @valid_image, @valid_action)
+            }
+
     expect{
-      Imperium::DataModels::MenuSceneDataModel.new(
-          'someString',
-          {
-              'elem1' => Imperium::DataModels::MenuSceneElementDataModel.new,
-              'elem2' => Imperium::DataModels::MenuSceneElementDataModel.new
-          })
+      Imperium::DataModels::MenuSceneDataModel.new(@valid_image, valid_elem_data_model)
     }.not_to raise_error
   end
 
@@ -19,19 +26,36 @@ describe Imperium::DataModels::MenuSceneDataModel do
       Imperium::DataModels::MenuSceneDataModel.new(nil, 'someString')
     }.to raise_error ArgumentError
     expect{
-      Imperium::DataModels::MenuSceneDataModel.new('someString', nil)
+      Imperium::DataModels::MenuSceneDataModel.new(@valid_image, nil)
     }.to raise_error ArgumentError
     expect{
-      Imperium::DataModels::MenuSceneDataModel.new('someString', 'someOtherString')
+      Imperium::DataModels::MenuSceneDataModel.new(@valid_image, 'someOtherString')
     }.to raise_error ArgumentError
     expect{
-      Imperium::DataModels::MenuSceneDataModel.new('someString', 'someOtherString')
+      Imperium::DataModels::MenuSceneDataModel.new(@valid_image, 'someOtherString')
     }.to raise_error ArgumentError
     expect{
-      Imperium::DataModels::MenuSceneDataModel.new('someString', {})
+      Imperium::DataModels::MenuSceneDataModel.new(@valid_image, {})
       }.to raise_error ArgumentError
     expect{
-      Imperium::DataModels::MenuSceneDataModel.new('someString', { 'key1' => 1, 'key2' => 2 })
+      Imperium::DataModels::MenuSceneDataModel.new(@valid_image, { 'key1' => 1, 'key2' => 2 })
       }.to raise_error ArgumentError
+  end
+
+  it 'has background and elements accessor' do
+    valid_area = Imperium::Area.new(Imperium::Point.new(1, 1), 1, 1)
+    valid_image = Gosu::Image.new($window, '../resources/menu/exit.png', false)
+    valid_action = lambda { puts 'action performed!' }
+
+    valid_elem_data_model =
+        {
+            'elem1' => Imperium::DataModels::MenuSceneElementDataModel.new(valid_area, valid_image, valid_image, valid_action)
+        }
+
+
+    data_model = Imperium::DataModels::MenuSceneDataModel.new(@valid_image, valid_elem_data_model)
+
+    expect(data_model.background).to be == @valid_image
+    expect(data_model.menu_elements).to be == valid_elem_data_model
   end
 end
