@@ -25,6 +25,10 @@ module Imperium
           raise ArgumentError.new 'Argument action should be a non-nil lambda-block'
         end
 
+        @area = area
+        @image_active = image_active
+        @image_normal = image_normal
+        @action = action
       end
 
       # Area of menu element
@@ -42,7 +46,7 @@ module Imperium
       end
 
       # Normal image
-      # This iamge will be rendered when
+      # This image will be rendered when
       # particular menu element is in its
       # normal state
       def image_normal

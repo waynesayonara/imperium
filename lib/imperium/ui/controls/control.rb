@@ -33,14 +33,14 @@ module Imperium
     end
 
     public
-    def button_up(button_id)
+    def button_up(button_id, point)
       self.is_active= false
-      self.on_mouse_up(button_id)
+      self.on_button_up(button_id, point)
     end
 
-    def button_down(button_id)
+    def button_down(button_id, point)
       self.is_active= true
-      self.on_mouse_down(button_id)
+      self.on_button_down(button_id, point)
     end
 
     def hover(is_on)
@@ -68,11 +68,11 @@ module Imperium
     end
 
     # Can be overridden in derived classes
-    def on_mouse_up(button_id)
+    def on_button_up(button_id, point)
     end
 
     # Can be overridden in derived classes
-    def on_mouse_down(button_id)
+    def on_button_down(button_id, point)
     end
   end
 end

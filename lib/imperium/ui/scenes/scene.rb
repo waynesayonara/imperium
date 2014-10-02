@@ -124,7 +124,7 @@ module Imperium
     def process_button_down(button_id, point)
       ui_controls.each do |control|
         if(control.area.includes?(point))
-          control.button_down(button_id)
+          control.button_down(button_id, point)
         end
       end
     end
@@ -134,7 +134,7 @@ module Imperium
     def process_button_up(button_id, point)
       ui_controls.each do |control|
         if(control.area.includes?(point))
-          control.button_up(button_id)
+          control.button_up(button_id, point)
         end
       end
     end

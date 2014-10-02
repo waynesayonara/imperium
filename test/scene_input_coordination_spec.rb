@@ -49,11 +49,11 @@ describe Imperium::Scene do
       raise StandardError.new "hover off at #{@id}!"
     end
 
-    def on_mouse_down(button_id)
+    def on_button_down(button_id, point)
       raise StandardError.new "button down at #{@id}!"
     end
 
-    def on_mouse_up(button_id)
+    def on_button_up(button_id, point)
       raise StandardError.new "button up at #{@id}!"
     end
   end

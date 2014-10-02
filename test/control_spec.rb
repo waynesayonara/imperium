@@ -20,16 +20,12 @@ describe Imperium::Control do
       raise StandardError.new 'hover off!'
     end
 
-    def on_mouse_down(button_id)
-      raise StandardError.new 'mouse down!'
+    def on_button_down(button_id, point)
+      raise StandardError.new "button #{button_id} down at #{point.x}, #{point.y}!"
     end
 
-    def on_mouse_up(button_id)
-      raise StandardError.new 'mouse up!'
-    end
-
-    def on_click(button_id)
-      raise StandardError.new 'click!'
+    def on_button_up(button_id, point)
+      raise StandardError.new "button #{button_id} up at #{point.x}, #{point.y}!"
     end
   end
 
@@ -93,17 +89,17 @@ describe Imperium::Control do
   it 'activates on mouse_down and deactivates on mouse_up' do
     instance = ControlImpl.new
     expect(instance.is_active).to be false
-    instance.button_down(Gosu::MsLeft)
+    instance.button_down(Gosu::MsLeft, Imperium::Point.new(0, 0))
     expect(instance.is_active).to be true
-    instance.button_up(Gosu::MsLeft)
+    instance.button_up(Gosu::MsLeft, Imperium::Point.new(0, 0))
     expect(instance.is_active).to be false
   end
 
   it 'calls mouse_up and mouse_down implementations on event' do
     instance = ThrowingControlImpl.new
-    expect { instance.button_down(Gosu::MsLeft) }.to raise_error(StandardError, 'mouse down!')
+    expect { instance.button_down(Gosu::MsLeft, Imperium::Point.new(5, 6)) }.to raise_error(StandardError, "button #{Gosu::MsLeft} down at 5, 6!")
     expect(instance.is_active).to be true
-    expect { instance.button_up(Gosu::MsLeft) }.to raise_error(StandardError, 'mouse up!')
+    expect { instance.button_up(Gosu::MsLeft, Imperium::Point.new(7, 8)) }.to raise_error(StandardError, "button #{Gosu::MsLeft} up at 7, 8!")
     expect(instance.is_active).to be false
   end
 end
