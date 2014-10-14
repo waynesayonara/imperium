@@ -1,5 +1,6 @@
 require 'rspec'
 require_relative '../lib/imperium'
+require_relative 'spec_helper'
 
 describe Imperium::Map::GameMap do
 
