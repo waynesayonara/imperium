@@ -1,25 +1,9 @@
 require 'rspec'
 require_relative '../lib/imperium'
-require_relative 'spec_helper'
+require_relative 'gosu_mock_helper'
 require_relative '../test/gosu-mock/gosu_mock'
 
 describe 'Imperium::MenuScene rendering' do
-  before(:all) do
-    GosuWindowBackup = Gosu::Window
-    GosuImageBackup = Gosu::Image
-    Gosu.send(:remove_const, :Window)
-    Gosu.send(:remove_const, :Image)
-    Gosu::Window = GosuMock::Window
-    Gosu::Image = GosuMock::Image
-  end
-
-  after(:all) do
-    Gosu.send(:remove_const, :Window)
-    Gosu.send(:remove_const, :Image)
-    Gosu::Window = GosuWindowBackup
-    Gosu::Image = GosuImageBackup
-  end
-
   class MockWindow < GosuMock::Window
     def initialize
       super(200,200,false)

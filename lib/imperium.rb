@@ -8,6 +8,7 @@ require_relative '../lib/imperium/ui/controls/menu_element_control'
 require_relative '../lib/imperium/ui/scenes/implementations/menu_scene'
 require_relative '../lib/imperium/ui/data_models/menu/menu_scene_data_model'
 require_relative '../lib/imperium/ui/data_models/menu/menu_scene_element_data_model'
+require_relative '../lib/imperium/ui/data_models/menu/menu_scene_data_model_factory'
 require 'rubygems'
 require 'gosu'
 

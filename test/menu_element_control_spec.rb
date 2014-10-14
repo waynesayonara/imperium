@@ -1,6 +1,6 @@
 require 'rspec'
 require_relative '../lib/imperium'
-require_relative 'spec_helper'
+require_relative 'gosu_mock_helper'
 require_relative '../test/gosu-mock/gosu_mock'
 
 describe Imperium::MenuElementControl do
@@ -10,38 +10,12 @@ describe Imperium::MenuElementControl do
   @action
   @valid_data_model
 
-  @global_window_back_up
-
   before(:all) do
-    GosuWindowBackup = Gosu::Window
-    GosuImageBackup = Gosu::Image
-    Gosu.send(:remove_const, :Window)
-    Gosu.send(:remove_const, :Image)
-    Gosu::Window = GosuMock::Window
-    Gosu::Image = GosuMock::Image
-
-    @global_window_back_up = $window
-    $window = GosuMock::Window.new(200, 200, false)
-
     @area = Imperium::Area.new(Imperium::Point.new(2, 3), 4, 5)
     @image_normal = Gosu::Image.new($window, '../resources/menu/exit.png', false)
     @image_active = Gosu::Image.new($window, '../resources/menu/exit_selected.png', false)
     @action = lambda { raise StandardError.new 'click action!' }
     @valid_data_model = Imperium::DataModels::MenuSceneElementDataModel.new(@area, @image_active, @image_normal, @action)
-  end
-
-  after(:all) do
-    Gosu.send(:remove_const, :Window)
-    Gosu.send(:remove_const, :Image)
-    Gosu::Window = GosuWindowBackup
-    Gosu::Image = GosuImageBackup
-
-    $window = @global_window_back_up
-  end
-
-  after(:each) do
-    # clean up
-    $window.drawing_events.clear
   end
 
   it 'should render active image when hover is on' do
@@ -65,7 +39,6 @@ describe Imperium::MenuElementControl do
     @control.hover(false)
     @control.render_control
 
-    dr = $window.drawing_events
     expect($window.drawing_events.count).to be == 1
     drawing_event = $window.drawing_events[0]
     expect(drawing_event).not_to be_nil

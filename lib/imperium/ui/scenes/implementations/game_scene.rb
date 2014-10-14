@@ -36,6 +36,14 @@ module Imperium
       y += DEFAULT_MAP_SCROLLING_SPEED if $window.button_down?(Gosu::KbDown) #&& @y < current_map.height
       @data_model.game_data.character.move(x, y)
     end
+
+    # Custom handler for button_up on the WHOLE scene
+    # Can be overridden in derived classes
+    def on_button_up(button_id, point)
+      if(button_id == Gosu::KbEscape)
+        $window.pop_scene
+      end
+    end
   end
 
 end
