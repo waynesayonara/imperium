@@ -8,7 +8,6 @@ module Imperium
       self.data_model_type = Imperium::DataModels::MenuSceneDataModel
       self.data_model = data_model
 
-      @controls = []
       self.data_model.menu_elements.values.each do |elem|
         control = Imperium::MenuElementControl.new(elem)
         add_control(control)
