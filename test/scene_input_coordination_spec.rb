@@ -2,26 +2,26 @@ require 'rspec'
 require_relative '../lib/imperium'
 require_relative 'spec_helper'
 
-describe Imperium::Scene do
+describe Engine::Scene do
   class SceneImpl
-    include Imperium::Scene
+    include Engine::Scene
   end
 
   class ControlImpl
-    include Imperium::Control
+    include Engine::Control
 
     def render_control
     end
   end
 
   class ThrowingSizableControlImpl
-    include Imperium::Control
+    include Engine::Control
 
     @id
 
     def initialize(id, area)
-      if(area.nil? || !area.is_a?(Imperium::Area))
-        raise ArgumentError.new "Argument can only be a non-nil instance of #{Imperium::Area}"
+      if(area.nil? || !area.is_a?(Engine::Area))
+        raise ArgumentError.new "Argument can only be a non-nil instance of #{Engine::Area}"
       end
 
       @id = id
@@ -88,14 +88,14 @@ describe Imperium::Scene do
   end
 
   it 'activates hover events on controls' do
-    top_point = Imperium::Point.new(5, 3)
-    area = Imperium::Area.new(top_point, 7, 9)
+    top_point = Engine::Point.new(5, 3)
+    area = Engine::Area.new(top_point, 7, 9)
     throwingControl1 = ThrowingSizableControlImpl.new(1, area)
     instance = SceneImpl.new
     expect{ instance.add_control(throwingControl1) }.to raise_error(StandardError, 'rendered at 1!')
 
-    off_point = Imperium::Point.new(1, 1)
-    on_point = Imperium::Point.new(10, 10)
+    off_point = Engine::Point.new(1, 1)
+    on_point = Engine::Point.new(10, 10)
 
     expect { instance.update(off_point) }.not_to raise_error
     expect(throwingControl1.is_active).to be false
@@ -106,17 +106,17 @@ describe Imperium::Scene do
   end
 
   it 'activates button_up/button_down on controls' do
-    top_point = Imperium::Point.new(5, 3)
-    area = Imperium::Area.new(top_point, 7, 9)
-    area2 = Imperium::Area.new(top_point, 1, 1)
+    top_point = Engine::Point.new(5, 3)
+    area = Engine::Area.new(top_point, 7, 9)
+    area2 = Engine::Area.new(top_point, 1, 1)
     throwingControl1 = ThrowingSizableControlImpl.new(1, area)
     throwingControl2 = ThrowingSizableControlImpl.new(2, area)
     instance = SceneImpl.new
     expect{ instance.add_control(throwingControl1) }.to raise_error(StandardError, 'rendered at 1!')
     expect{ instance.add_control(throwingControl2) }.to raise_error(StandardError, 'rendered at 2!')
 
-    off_point = Imperium::Point.new(1, 1)
-    on_point = Imperium::Point.new(10, 10)
+    off_point = Engine::Point.new(1, 1)
+    on_point = Engine::Point.new(10, 10)
 
     expect { instance.button_up(Gosu::Gp0Down, off_point) }.not_to raise_error
     expect { instance.button_down(Gosu::Gp0Down, on_point) }.to raise_error(StandardError, 'button down at 1!')

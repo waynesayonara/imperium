@@ -3,9 +3,9 @@ require 'rspec/expectations'
 require_relative '../lib/imperium'
 require_relative 'spec_helper'
 
-describe Imperium::Control do
+describe Engine::Control do
   class ThrowingControlImpl
-    include Imperium::Control
+    include Engine::Control
 
     def is_active=(value)
       super value
@@ -30,7 +30,7 @@ describe Imperium::Control do
   end
 
   class ControlImpl
-    include Imperium::Control
+    include Engine::Control
 
     def is_active=(value)
       super value
@@ -56,8 +56,8 @@ describe Imperium::Control do
     instance = ControlImpl.new
     expect(instance.area).to be_nil
 
-    top_point = Imperium::Point.new(12, 13)
-    area = Imperium::Area.new(top_point, 20, 10)
+    top_point = Engine::Point.new(12, 13)
+    area = Engine::Area.new(top_point, 20, 10)
     instance.area = area
     expect(instance.area).to be == area
   end
@@ -89,17 +89,17 @@ describe Imperium::Control do
   it 'activates on mouse_down and deactivates on mouse_up' do
     instance = ControlImpl.new
     expect(instance.is_active).to be false
-    instance.button_down(Gosu::MsLeft, Imperium::Point.new(0, 0))
+    instance.button_down(Gosu::MsLeft, Engine::Point.new(0, 0))
     expect(instance.is_active).to be true
-    instance.button_up(Gosu::MsLeft, Imperium::Point.new(0, 0))
+    instance.button_up(Gosu::MsLeft, Engine::Point.new(0, 0))
     expect(instance.is_active).to be false
   end
 
   it 'calls mouse_up and mouse_down implementations on event' do
     instance = ThrowingControlImpl.new
-    expect { instance.button_down(Gosu::MsLeft, Imperium::Point.new(5, 6)) }.to raise_error(StandardError, "button #{Gosu::MsLeft} down at 5, 6!")
+    expect { instance.button_down(Gosu::MsLeft, Engine::Point.new(5, 6)) }.to raise_error(StandardError, "button #{Gosu::MsLeft} down at 5, 6!")
     expect(instance.is_active).to be true
-    expect { instance.button_up(Gosu::MsLeft, Imperium::Point.new(7, 8)) }.to raise_error(StandardError, "button #{Gosu::MsLeft} up at 7, 8!")
+    expect { instance.button_up(Gosu::MsLeft, Engine::Point.new(7, 8)) }.to raise_error(StandardError, "button #{Gosu::MsLeft} up at 7, 8!")
     expect(instance.is_active).to be false
   end
 end

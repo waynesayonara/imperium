@@ -1,14 +1,13 @@
-require_relative 'version'
-require_relative '../../lib/imperium/ui/scenes/scene'
+require_relative '../../lib/engine/ui/scenes/scene'
 require 'rubygems'
 require 'gosu'
-require_relative 'version'
-require_relative 'entity/npc'
-require_relative 'map/game_map'
-require_relative 'character/character'
-require_relative 'map/loader/tmx_map_loader'
-require_relative 'game/game_state'
-require_relative 'game/game_loader'
+require_relative '../../lib/engine/version'
+require_relative '../../lib/engine/entity/entity'
+require_relative '../../lib/engine/map/game_map'
+require_relative '../../lib/engine/character/character'
+require_relative '../../lib/engine/map/loader/tmx_map_loader'
+require_relative '../../lib/engine/game/game_state'
+require_relative '../../lib/engine/game/game_loader'
 require_relative '../../lib/imperium/ui/scenes/implementations/game_scene'
 
 module Imperium
@@ -20,7 +19,7 @@ module Imperium
 
     def initialize
       super DEFAULT_WINDOW_WIDTH, DEFAULT_WINDOW_HEIGHT, fullscreen=false
-      self.caption = "Imperium v.#{Imperium::VERSION}"
+      self.caption = "Imperium v.#{Engine::VERSION}"
 
       @scenes = []
     end
@@ -45,8 +44,8 @@ module Imperium
     # Pushes new scene to the uppermost position
     # and returns all current game scenes
     def push_scene(scene)
-      if scene.nil? || !scene.is_a?(Imperium::Scene)
-        raise ArgumentError.new "Cannot push scene which is empty or not derived from #{Imperium::Scene}"
+      if scene.nil? || !scene.is_a?(Engine::Scene)
+        raise ArgumentError.new "Cannot push scene which is empty or not derived from #{Engine::Scene}"
       end
       scene_pushing(scene)
       result = @scenes.push(scene)
@@ -107,7 +106,7 @@ module Imperium
     def get_current_cursor_point
       x = [0, mouse_x.to_i].max
       y = [0, mouse_y.to_i].max
-      return Imperium::Point.new(x, y)
+      return Engine::Point.new(x, y)
     end
   end
 end

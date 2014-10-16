@@ -1,9 +1,9 @@
 require 'rspec'
 require_relative '../lib/imperium'
 
-describe Imperium::Map do
+describe Engine::Map do
 
-  let(:target_module) { Imperium::Map }
+  let(:target_module) { Engine::Map }
   let(:correct_path) { '../resources/maps/map.tmx' }
   let(:incorrect_path) { 'wrong_path' }
 

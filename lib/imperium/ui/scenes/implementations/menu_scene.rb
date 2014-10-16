@@ -1,15 +1,15 @@
-require_relative '../../../../../lib/imperium'
+require_relative '../../../../../lib/engine/ui/scenes/scene'
 
 module Imperium
   class MenuScene
-    include Imperium::Scene
+    include Engine::Scene
 
     def initialize(data_model)
-      self.data_model_type = Imperium::DataModels::MenuSceneDataModel
+      self.data_model_type = Engine::DataModels::MenuSceneDataModel
       self.data_model = data_model
 
       self.data_model.menu_elements.values.each do |elem|
-        control = Imperium::MenuElementControl.new(elem)
+        control = Engine::MenuElementControl.new(elem)
         add_control(control)
       end
     end

@@ -15,7 +15,7 @@ describe 'All scenes implementations common behaviour' do
       # class_name => ClassName
       impl_class_name = file_name.split('_').collect(&:capitalize).join
       # get class object
-      impl_class = Imperium.const_get(impl_class_name);
+      impl_class = Engine.const_get(impl_class_name);
       # create derived class with default constructor
       impl_derived_class =
           Class.new impl_class do
@@ -25,7 +25,7 @@ describe 'All scenes implementations common behaviour' do
       # instantiate derived class
       impl_derived_instance = impl_derived_class.new
       # check whether derived class instance includes module 'Scene'
-      expect(impl_derived_instance.class.ancestors).to include(Imperium::Scene)
+      expect(impl_derived_instance.class.ancestors).to include(Engine::Scene)
     end
   end
 end

@@ -3,14 +3,15 @@ require_relative '../../../../imperium'
 module Imperium
   module DataModels
     class MenuSceneElementDataModel
+      include Engine
       @area
       @image_active
       @image_normal
       @action
 
       def initialize(area, image_active, image_normal, action)
-        if(area.nil? || !area.is_a?(Imperium::Area))
-          raise ArgumentError.new "Argument area should be a non-nil instance of #{Imperium::Area}"
+        if(area.nil? || !area.is_a?(Engine::Area))
+          raise ArgumentError.new "Argument area should be a non-nil instance of #{Engine::Area}"
         end
 
         if(image_active.nil? || !image_active.is_a?(Gosu::Image))

@@ -2,10 +2,10 @@ require 'rspec'
 require_relative '../lib/imperium'
 require_relative 'spec_helper'
 
-describe Imperium::Map::GameMap do
+describe Engine::Map::GameMap do
 
-  let(:target_class) { Imperium::Map::GameMap }
-  let(:tmx_map) { Imperium::Map.load_map('../resources/maps/map.tmx') }
+  let(:target_class) { Engine::Map::GameMap }
+  let(:tmx_map) { Engine::Map.load_map('../resources/maps/map.tmx') }
 
   subject(:map) { target_class.new(tmx_map) }
 
@@ -17,13 +17,13 @@ describe Imperium::Map::GameMap do
 
   describe '#tilesets' do
     it 'returns instance of TileSets' do
-      expect(map.tilesets).to be_a Imperium::Map::TileSets
+      expect(map.tilesets).to be_a Engine::Map::TileSets
     end
   end
 
   describe '#layers' do
     it 'returns array of Layer' do
-      expect(map.layers).to all(be_an(Imperium::Map::Layer))
+      expect(map.layers).to all(be_an(Engine::Map::Layer))
     end
   end
 

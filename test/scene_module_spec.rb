@@ -2,10 +2,10 @@ require 'rspec'
 require_relative '../lib/imperium'
 require_relative 'spec_helper'
 
-describe Imperium::Scene do
+describe Engine::Scene do
 
   class SceneImpl
-    include Imperium::Scene
+    include Engine::Scene
   end
 
   before(:each) do

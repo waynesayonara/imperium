@@ -1,15 +1,15 @@
 require_relative '../../../../../lib/imperium'
-require_relative '../../../../imperium/ui/data_models/game/game_scene_data_model'
+require_relative '../../../../../lib/engine/ui/data_models/game/game_scene_data_model'
 
 module Imperium
   class GameScene
-    include Imperium::Scene
+    include Engine::Scene
 
     DEFAULT_MAP_SCROLLING_SPEED = 3
 
     def initialize(data_model)
-      self.data_model_type = Imperium::DataModels::GameSceneDataModel
-      self.data_model = Imperium::DataModels::GameSceneDataModel.new(data_model)
+      self.data_model_type = Engine::DataModels::GameSceneDataModel
+      self.data_model = Engine::DataModels::GameSceneDataModel.new(data_model)
       @x = @y = 0
     end
 
@@ -27,7 +27,7 @@ module Imperium
     end
 
     def on_update(point)
-      $window.caption = "Imperium v.#{Imperium::VERSION}. FPS: #{Gosu.fps}."
+      $window.caption = "Imperium v.#{Engine::VERSION}. FPS: #{Gosu.fps}."
 
       x = y = 0
       x -= DEFAULT_MAP_SCROLLING_SPEED if $window.button_down?(Gosu::KbLeft) && get_char.x > 0
