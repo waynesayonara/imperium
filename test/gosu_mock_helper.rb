@@ -1,7 +1,7 @@
 require_relative 'spec_helper'
 
 $window_back_up
-$window = Engine::ImperiumMain.new
+$window = Imperium::ImperiumMain.new
 
 RSpec.configure do |config|
   # config.before(:all) do

@@ -29,7 +29,7 @@ describe Engine::MenuElementControl do
     @image_normal = Gosu::Image.new($window, '../resources/menu/exit.png', false)
     @image_active = Gosu::Image.new($window, '../resources/menu/exit_selected.png', false)
     @action = lambda { raise StandardError.new 'click action!' }
-    @valid_data_model = Engine::DataModels::MenuSceneElementDataModel.new(@area, @image_active, @image_normal, @action)
+    @valid_data_model = Imperium::DataModels::MenuSceneElementDataModel.new(@area, @image_active, @image_normal, @action)
   end
 
   after(:all) do
