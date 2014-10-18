@@ -9,8 +9,8 @@ module Engine
 
     protected
     def initialize(menu_scene_element)
-      if(menu_scene_element.nil? || !menu_scene_element.is_a?(Imperium::DataModels::MenuSceneElementDataModel))
-        raise ArgumentError.new "Argument can only be a non-nil instance of #{Imperium::DataModels::MenuSceneElementDataModel}"
+      if(menu_scene_element.nil? || !menu_scene_element.is_a?(Engine::DataModels::MenuSceneElementDataModel))
+        raise ArgumentError.new "Argument can only be a non-nil instance of #{Engine::DataModels::MenuSceneElementDataModel}"
       end
 
       @data_model = menu_scene_element

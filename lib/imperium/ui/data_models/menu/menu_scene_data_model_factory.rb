@@ -29,7 +29,7 @@ module Imperium
         image_normal = Gosu::Image.new($window, '../resources/menu/new_game.png', false)
         image_active = Gosu::Image.new($window, '../resources/menu/new_game_selected.png', false)
         action = lambda { $window.push_scene(Imperium::GameScene.new(Engine::Game.load_game_from_map(Engine::Map::TEST_PATH))) }
-        return Imperium::DataModels::MenuSceneElementDataModel.new(area, image_active, image_normal, action)
+        return Engine::DataModels::MenuSceneElementDataModel.new(area, image_active, image_normal, action)
       end
 
       def self.create_load_game_element_data_model
@@ -37,7 +37,7 @@ module Imperium
         image_normal = Gosu::Image.new($window, '../resources/menu/load_game.png', false)
         image_active = Gosu::Image.new($window, '../resources/menu/load_game_selected.png', false)
         action = lambda { puts 'Not Implemented!' }
-        return Imperium::DataModels::MenuSceneElementDataModel.new(area, image_active, image_normal, action)
+        return Engine::DataModels::MenuSceneElementDataModel.new(area, image_active, image_normal, action)
       end
 
       def self.create_exit_game_element_data_model
@@ -45,7 +45,7 @@ module Imperium
         image_normal = Gosu::Image.new($window, '../resources/menu/exit.png', false)
         image_active = Gosu::Image.new($window, '../resources/menu/exit_selected.png', false)
         action = lambda { exit }
-        return Imperium::DataModels::MenuSceneElementDataModel.new(area, image_active, image_normal, action)
+        return Engine::DataModels::MenuSceneElementDataModel.new(area, image_active, image_normal, action)
       end
     end
   end

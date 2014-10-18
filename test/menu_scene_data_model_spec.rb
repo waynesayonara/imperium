@@ -13,7 +13,7 @@ describe Engine::DataModels::MenuSceneDataModel do
   it 'can be initialized with a collection of MenuSceneElementDataModel' do
     valid_elem_data_model =
             {
-                'elem1' => Imperium::DataModels::MenuSceneElementDataModel.new(@valid_area, @valid_image, @valid_image, @valid_action)
+                'elem1' => Engine::DataModels::MenuSceneElementDataModel.new(@valid_area, @valid_image, @valid_image, @valid_action)
             }
 
     expect{
@@ -49,7 +49,7 @@ describe Engine::DataModels::MenuSceneDataModel do
 
     valid_elem_data_model =
         {
-            'elem1' => Imperium::DataModels::MenuSceneElementDataModel.new(valid_area, valid_image, valid_image, valid_action)
+            'elem1' => Engine::DataModels::MenuSceneElementDataModel.new(valid_area, valid_image, valid_image, valid_action)
         }
 
 

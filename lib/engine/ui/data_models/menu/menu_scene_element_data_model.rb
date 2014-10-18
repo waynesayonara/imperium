@@ -1,6 +1,4 @@
-require_relative '../../../../imperium'
-
-module Imperium
+module Engine
   module DataModels
     class MenuSceneElementDataModel
       include Engine

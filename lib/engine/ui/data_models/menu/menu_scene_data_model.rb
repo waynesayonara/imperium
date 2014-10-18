@@ -20,8 +20,8 @@ module Engine
           raise ArgumentError.new 'Input menu elements must represent a non-empty hash'
         end
 
-        unless menu_elements.values.all? { |v| v.is_a?(Imperium::DataModels::MenuSceneElementDataModel) }
-          raise ArgumentError.new "Input menu elements must be of type #{Imperium::DataModels::MenuSceneElementDataModel}"
+        unless menu_elements.values.all? { |v| v.is_a?(Engine::DataModels::MenuSceneElementDataModel) }
+          raise ArgumentError.new "Input menu elements must be of type #{Engine::DataModels::MenuSceneElementDataModel}"
         end
 
         self.background = background

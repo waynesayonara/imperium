@@ -12,8 +12,8 @@ describe Imperium::MenuScene do
     @data_model = Engine::DataModels::MenuSceneDataModel.new(
                   valid_image,
                   {
-                      'elem1' => Imperium::DataModels::MenuSceneElementDataModel.new(valid_area, valid_image, valid_image, valid_action),
-                      'elem2' => Imperium::DataModels::MenuSceneElementDataModel.new(valid_area, valid_image, valid_image, valid_action)
+                      'elem1' => Engine::DataModels::MenuSceneElementDataModel.new(valid_area, valid_image, valid_image, valid_action),
+                      'elem2' => Engine::DataModels::MenuSceneElementDataModel.new(valid_area, valid_image, valid_image, valid_action)
                   })
     expect{ Imperium::MenuScene.new(@data_model) }.not_to raise_error
   end
