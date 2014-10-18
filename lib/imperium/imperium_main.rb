@@ -19,7 +19,7 @@ module Imperium
 
     def initialize
       super DEFAULT_WINDOW_WIDTH, DEFAULT_WINDOW_HEIGHT, fullscreen=false
-      self.caption = "Imperium v.#{Engine::VERSION}"
+      self.caption = "Imperium v.#{Imperium::VERSION}"
 
       @scenes = []
     end

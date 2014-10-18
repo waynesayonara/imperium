@@ -1,4 +1,4 @@
-require_relative './engine/version'
+require_relative '../lib/imperium/version'
 require_relative '../lib/engine/ui/scenes/scene'
 require_relative '../lib/imperium/imperium_main'
 require_relative '../lib/engine/core/point'
