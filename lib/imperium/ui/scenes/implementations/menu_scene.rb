@@ -15,7 +15,7 @@ module Imperium
     end
 
     # this method will be called from main window
-    # it describes how concrete scene impl
+    # it determines how concrete scene impl
     # should be rendered on a screen
     def render_scene
       self.data_model.background.draw(0, 0, 0)
