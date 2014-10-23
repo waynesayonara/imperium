@@ -41,7 +41,7 @@ module Imperium
     # Can be overridden in derived classes
     def on_button_up(button_id, point)
       if(button_id == Gosu::KbEscape)
-        $window.pop_scene
+        $window.push_scene(Imperium::MenuScene.new(Imperium::DataModels::MenuSceneDataModelFactory.create_resume_game_menu_data_model))
       end
     end
   end
