@@ -18,11 +18,6 @@ describe Engine::MenuElementControl do
     @valid_data_model = Engine::DataModels::MenuSceneElementDataModel.new(@area, @image_active, @image_normal, @action)
   end
 
-  after(:each) do
-    # clean up
-    $window.drawing_events.clear
-  end
-
   it 'should render active image when hover is on' do
     @control = Engine::MenuElementControl.new(@valid_data_model)
 
