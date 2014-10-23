@@ -10,35 +10,12 @@ describe Engine::MenuElementControl do
   @action
   @valid_data_model
 
-  @global_window_backup
-
-  @global_window_back_up
-
   before(:all) do
-    GosuWindowBackup = Gosu::Window
-    GosuImageBackup = Gosu::Image
-    Gosu.send(:remove_const, :Window)
-    Gosu.send(:remove_const, :Image)
-    Gosu::Window = GosuMock::Window
-    Gosu::Image = GosuMock::Image
-
-    @global_window_back_up = $window
-    $window = GosuMock::Window.new(200, 200, false)
-
     @area = Engine::Area.new(Engine::Point.new(2, 3), 4, 5)
     @image_normal = Gosu::Image.new($window, '../resources/menu/exit.png', false)
     @image_active = Gosu::Image.new($window, '../resources/menu/exit_selected.png', false)
     @action = lambda { raise StandardError.new 'click action!' }
     @valid_data_model = Engine::DataModels::MenuSceneElementDataModel.new(@area, @image_active, @image_normal, @action)
-  end
-
-  after(:all) do
-    Gosu.send(:remove_const, :Window)
-    Gosu.send(:remove_const, :Image)
-    Gosu::Window = GosuWindowBackup
-    Gosu::Image = GosuImageBackup
-
-    $window = @global_window_back_up
   end
 
   after(:each) do

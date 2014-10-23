@@ -7,7 +7,7 @@ before_script:
  - export DISPLAY=:99.0
  - sh -e /etc/init.d/xvfb start
 script:
- - cd test && bundle exec rspec *
+ - cd test && bundle exec rspec *_spec.rb
 addons:
   code_climate:
     repo_token: 9d20f21fc1b16cadd10b7962abc77594fae7c6db52b86a1d4650a1dd521138f5
