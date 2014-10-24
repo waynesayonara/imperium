@@ -6,19 +6,18 @@ describe Imperium::MenuScene do
   @valid_area
   @valid_background_image
   @valid_image
-  @valid_action
   @valid_data_model
 
   before(:all) do
     @valid_area = Engine::Area.new(Engine::Point.new(1, 1), 1, 1)
     @valid_background_image = Gosu::Image.new($window, '../resources/menu/new_game.png', false)
     @valid_image = Gosu::Image.new($window, '../resources/menu/exit.png', false)
-    @valid_action = lambda { puts 'action performed!' }
+    valid_action = lambda { puts 'action performed!' }
 
     @valid_data_model = Engine::DataModels::MenuSceneDataModel.new(
         @valid_background_image,
         {
-            'elem1' => Engine::DataModels::MenuSceneElementDataModel.new(@valid_area, @valid_image, @valid_image, @valid_action),
+            'elem1' => Engine::DataModels::MenuSceneElementDataModel.new(@valid_area, @valid_image, @valid_image, valid_action),
         })
   end
 
