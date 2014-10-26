@@ -1,7 +1,6 @@
 # Current Build Status
 [![Build Status](https://travis-ci.org/waynesayonara/imperium.svg?branch=master)](https://travis-ci.org/waynesayonara/imperium)
 [![Code Climate](https://codeclimate.com/github/waynesayonara/imperium/badges/gpa.svg)](https://codeclimate.com/github/waynesayonara/imperium)
-[![Test Coverage](https://codeclimate.com/github/waynesayonara/imperium/badges/coverage.svg)](https://codeclimate.com/github/waynesayonara/imperium)
 
 ## Issues:
 [![Stories in Ready](https://badge.waffle.io/waynesayonara/imperium.png?label=ready_for_development&title=Ready%20to%20be%20worked%20on)](https://waffle.io/waynesayonara/imperium)

@@ -1,7 +1,3 @@
-require 'codeclimate-test-reporter'
-SimpleCov.filters.clear
-CodeClimate::TestReporter.start
-
 require_relative '../lib/imperium/imperium_main'
 require 'rspec'
 
