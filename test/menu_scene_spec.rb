@@ -1,8 +1,10 @@
 require 'rspec'
 require_relative '../lib/imperium'
-require_relative 'gosu_mock_helper'
+require_relative '../test/gosu-mock/gosu_mock_context'
 
 describe Imperium::MenuScene do
+  include GosuMockContext
+
   @valid_area
   @valid_background_image
   @valid_image

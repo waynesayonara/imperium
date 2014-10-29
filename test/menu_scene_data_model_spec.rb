@@ -52,7 +52,6 @@ describe Engine::DataModels::MenuSceneDataModel do
             'elem1' => Engine::DataModels::MenuSceneElementDataModel.new(valid_area, valid_image, valid_image, valid_action)
         }
 
-
     data_model = Engine::DataModels::MenuSceneDataModel.new(@valid_image, valid_elem_data_model)
 
     expect(data_model.background).to be == @valid_image

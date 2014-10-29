@@ -1,9 +1,11 @@
 require 'rspec'
 require_relative '../lib/imperium'
-require_relative 'gosu_mock_helper'
+require_relative '../test/gosu-mock/gosu_mock_context'
 require_relative '../test/gosu-mock/gosu_mock'
 
 describe Engine::MenuElementControl do
+  include GosuMockContext
+
   @area
   @image_active
   @image_normal

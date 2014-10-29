@@ -1,7 +1,8 @@
-require_relative 'spec_helper'
+require_relative '../spec_helper'
+require 'rspec/core/shared_context'
 
-RSpec.configure do |config|
-  config.before(:all) do
+module GosuMockContext extend RSpec::Core::SharedContext
+  before(:all) do
     if($window.is_a?(Imperium::ImperiumMain))
       GosuWindowBackup ||= Gosu::Window
       GosuImageBackup ||= Gosu::Image
@@ -15,7 +16,7 @@ RSpec.configure do |config|
     end
   end
 
-  config.after(:all) do
+  after(:all) do
     if(!$window.is_a?(Imperium::ImperiumMain))
       Gosu.send(:remove_const, :Window)
       Gosu.send(:remove_const, :Image)
@@ -26,9 +27,8 @@ RSpec.configure do |config|
     end
   end
 
-  config.after(:each) do
+  after(:each) do
     # clean up
     $window.drawing_events.clear
   end
 end
-
