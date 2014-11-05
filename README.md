@@ -3,7 +3,7 @@
 [![Code Climate](https://codeclimate.com/github/waynesayonara/imperium/badges/gpa.svg)](https://codeclimate.com/github/waynesayonara/imperium)
 
 ## Issues:
-[![Stories in Ready](https://badge.waffle.io/waynesayonara/imperium.png?label=ready_for_development&title=Ready%20to%20be%20worked%20on)](https://waffle.io/waynesayonara/imperium)
+[![Stories in Ready](https://badge.waffle.io/waynesayonara/imperium.png?label=ready_for_development&title=Ready%20for%20development)](https://waffle.io/waynesayonara/imperium)
 [![Stories in In Progress](https://badge.waffle.io/waynesayonara/imperium.png?label=In%20Progress&title=In%20Progress)](https://waffle.io/waynesayonara/imperium)
 [![Stories in Need Code Review](https://badge.waffle.io/waynesayonara/imperium.png?label=need_review&title=Need%20Code%20Review)](https://waffle.io/waynesayonara/imperium)
 
